@@ -69,6 +69,12 @@ def caption(id):
     caption = predict_step("http://localhost:8080/" + id)
     return caption
 
+@app.route('/caption/<imageid>/c/<segmentid>', methods=["GET"])
+def captionSegment(imageid, segmentid):
+    print(imageid, segmentid)
+    caption = predict_step("http://localhost:8080/" + imageid + "/c/" + segmentid)
+    return caption
+
 @app.route('/embedding/<caption>', methods=['GET'])
 def embedding(caption):
     print(caption)
